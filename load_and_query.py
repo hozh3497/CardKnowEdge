@@ -51,7 +51,8 @@ CardMap = {"Chase":["Sapphire","Freedom","Chase",
 'Frontier','Hawaiian','Barclays'],'BofA':['Bank of America','BOA',
 'BofA'],'Bank of America':['Bank of America','BOA', 'BofA'],'BOA':
 ['Bank of America','BOA', 'BofA'],'Wells Fargo':['Wells Fargo'],
-'Capital One':['Capital One'],'US Bank':['US Bank','U.S. Bank']}
+'Capital One':['Capital One'],'US Bank':['US Bank','U.S. Bank'],
+'Discover':['Discover']}
 
 
 

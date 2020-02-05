@@ -44,8 +44,8 @@ from collections import defaultdict
 
 INPUT_FILE = '/Users/hongzhang/Documents/GitHub/IntelligentKYC/datacache/cached-1-29-2020.txt'
 #QUERY_NAMES = ['']
-model_dir = '/Users/hongzhang/Documents/GitHub/IntelligentKYC/checkpoint-290000/pytorch_model.bin'
-cache_dir = '/Users/hongzhang/Documents/GitHub/IntelligentKYC/checkpoint-290000/'
+model_dir = '/Users/hongzhang/Documents/GitHub/checkpoint-290000/pytorch_model.bin'
+cache_dir = '/Users/hongzhang/Documents/GitHub/checkpoint-290000/'
 
 class Embedding(object):
 	"""docstring for Embedding"""
@@ -92,19 +92,20 @@ class Clustering(object):
 		# Clustering
 		# choose the best number of clusters from 2 to 5:
 		time_start = time.time()
-		n_range = [1,2,3,4,5]
+		n_range = [2,3,4,5]
 		RS = 12330203
+		np.random.seed(RS)
 		self.projmat = TSNE(random_state=RS).fit_transform(self.embeddings.embeddings)
 
 		models = [GaussianMixture(n, covariance_type='full', random_state=0) for n in n_range]
-		aics = [model.fit(self.projmat).aic(self.projmat) for model in models]
+		aics = [model.fit(self.embeddings.embeddings).aic(self.embeddings.embeddings) for model in models]
 		idx = np.argmin(aics)
 
 		cluster_no = n_range[idx]
 		self.string_print = f'We found {cluster_no} clusters!'
 
-		gmm = GaussianMixture(n_components=cluster_no).fit(self.projmat)
-		self.labels = gmm.predict(self.projmat)
+		gmm = GaussianMixture(n_components=cluster_no).fit(self.embeddings.embeddings)
+		self.labels = gmm.predict(self.embeddings.embeddings)
 		self.label2text = defaultdict(list)
 		self.label2embedding = defaultdict(list)
 		for j,l in enumerate(self.labels):

@@ -20,7 +20,7 @@ from sklearn.metrics import pairwise_distances_argmin_min, pairwise_distances
 
 from wordcloud import WordCloud, STOPWORDS 
 
-st.title('CardKnowEdge--Know Your Credit Card!')
+st.title('CardKnowlEdge--Know Your Credit Card!')
 'On this website, you will learn about what other people are talking about\n recently about the credit card you are interested in.'
 
 credit_card = st.text_input("Which credit card product do you want to search?", "") # Change to drop-down menu
@@ -100,8 +100,12 @@ if submit and QUERY_NAMES:
 
 			#time.sleep(0.01)
 
+	for i in list(sorted(CLS.summary)):
+		st.text(f'Summaries from cluster {i}')
+		for t in list(set(CLS.summary[i])):
+			t
+	
 	'Distribution plot of the posts:'
-
 
 	X = CLS.projmat[:,0]
 	Y = CLS.projmat[:,1]
@@ -121,12 +125,6 @@ if submit and QUERY_NAMES:
 	plotting_comments.toolbar_location = None
 	#p = CLS.visualization()
 	st.bokeh_chart(plotting_comments)
-
-	for i in list(sorted(CLS.summary)):
-		st.text(f'Summaries from cluster {i}')
-		for t in list(set(CLS.summary[i])):
-			t
-	
 	# Then add some more graphical analyses:
 	# Create a bar plot here
 	cluster_no = len(CLS.label2text)
@@ -147,7 +145,7 @@ if submit and QUERY_NAMES:
 	for j in list(sorted(CLS.label2text)):
 		f'Word cloud for cluster {j}'
 		texts = " ".join(CLS.label2text[j])
-		stopwords = set(list(STOPWORDS)+['Chase','Amex','Credit','Card','Citi'])
+		stopwords = set(list(STOPWORDS)+['Chase','Amex','Credit','Card','Citi','Cards','business'])
 		wordcloud = WordCloud(width = 800, height = 800, 
                 background_color ='white', 
                 stopwords = stopwords, 
