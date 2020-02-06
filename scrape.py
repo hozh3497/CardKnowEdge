@@ -10,6 +10,7 @@ import re
 from datetime import datetime,date
 from collections import defaultdict
 
+input_dir = "/Users/hongzhang/Documents/GitHub/IntelligentKYC/datacache/*.json"
 
 def scrap_and_clean(url):
     not_interested = [' Show Printable Version  Email this Page', 'Search this Thread: Advanced Search',
@@ -208,7 +209,7 @@ def find_thread_links(page_url,query_words,max_hit=1000,max_page=100):
 
 # Then for each thread link, find the number of pages, then scrape backwards until none of the comments contains
 # desired time
-def scrape_queries(thread_links,thread_titles,usr_input0,usr_input1):
+def scrape_queries(thread_links,thread_titles,usr_input0,usr_input1, use_window=True):
     # store in a dictionary which matches thread title to all the associated comments
     all_comments = defaultdict(list)
     while thread_links:
@@ -225,14 +226,19 @@ def scrape_queries(thread_links,thread_titles,usr_input0,usr_input1):
                 response2 = get(url)
                 soup2 = BeautifulSoup(response2.text, 'html.parser')
                 dates = get_date_month(soup2)
-                if_in_range = [is_in_window(usr_input0,usr_input1,ref_date) for ref_date in dates]
-                #pdb.set_trace()
-                if 1 in if_in_range:
-                    comments = scrap_and_clean(url)
-                    all_comments[title].extend(comments)
-                    page_num-=1
+                if use_window==True:
+                	if_in_range = [is_in_window(usr_input0,usr_input1,ref_date) for ref_date in dates]
+                	#pdb.set_trace()
+                	if 1 in if_in_range:
+                		comments = scrap_and_clean(url)
+                		all_comments[title].extend(comments)
+                		page_num-=1
+                	else:
+                		break
                 else:
-                    break
+                	comments = scrap_and_clean(url)
+                	all_comments[title].extend(comments)
+                	page_num-=1
     return all_comments
 
 

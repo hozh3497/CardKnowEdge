@@ -2,7 +2,7 @@
 The final piece of code to do the clustering stuff
 '''
 
-from language_model import LanguageModel, embed_sents
+from language_model import LanguageModel#, embed_sents
 from load_and_query import load_json, search_posts, beautify_line
 from sklearn.mixture import GaussianMixture
 from sklearn.metrics import pairwise_distances_argmin_min, pairwise_distances
@@ -10,6 +10,9 @@ from sklearn.cluster import KMeans
 import numpy as np
 from load_and_query import CardMap
 import time
+import multiprocessing as mp
+from functools import partial
+from itertools import repeat
 
 # libraries for fancy plotting
 from numpy import linalg
@@ -42,7 +45,7 @@ from collections import defaultdict
 
 # input information
 
-INPUT_FILE = '/Users/hongzhang/Documents/GitHub/IntelligentKYC/datacache/cached-1-29-2020.txt'
+INPUT_FILE = '/Users/hongzhang/Documents/GitHub/IntelligentKYC/datacache/cached-2-6-2020.json'
 #QUERY_NAMES = ['']
 model_dir = '/Users/hongzhang/Documents/GitHub/checkpoint-290000/pytorch_model.bin'
 cache_dir = '/Users/hongzhang/Documents/GitHub/checkpoint-290000/'
@@ -79,8 +82,21 @@ class Embedding(object):
 	def processing_data(self):
 		self.string_print = f'You are all set! Let\'s see analyses!'
 		time_start = time.time()
-		self.embeddings = embed_sents(self.extracted_posts,self.LM)
+		#a_args = self.extracted_posts
+		#b_arg = self.LM
+		#pool = mp.Pool(processes=4)
+		#pool = mp.Pool(processes=4)
+		self.embeddings = self.LM.embed_sents(self.extracted_posts)
+		#self.embeddings = pool.map(partial(embed_sents, LM=self.LM), self.extracted_posts)
+		#self.embeddings = self.LM.embed_sents(self.extracted_posts)#,self.LM)
 		self.time_lapse = time.time()-time_start
+
+#def multi_core(func,a_args,b_arg):
+	# set up multiprocessing capability
+#	with mp.Pool(processes=4) as pool:
+#		M = pool.starmap(func, zip(a_args, repeat(b_arg)))
+#		N = pool.map(partial(func, b=b_arg), a_args)
+#		assert M == N
 
 class Clustering(object):
 	"""docstring for Clustering"""

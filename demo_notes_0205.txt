@@ -1,0 +1,45 @@
+Hong Zhang:
+5:11 total time.
+1. look at the screen more than audience. Suggestion: look at the audience!
+2. suggested intro: people check forums>so my solution>...
+3. what's special about the data? what's challenging?
+4. More info for tsne, gmm. Suggested: talk about data difference, so use tsne and gmm...
+
+Xiaodong Zhu:
+total time: 5:45
+1. EDA too long, need to compress
+	> highlight something in EDA
+	> plots not so descriptive/informative. change category<--type in plots
+2. motivation for model is fine, but compare to other models, for example linear regressions.
+	> what's the meaning of metrics to the company?
+	> should give an impression of what 25% error translates into. Can use linear regression to compare.
+	> scientific exploration of how to decide the final model
+3. How the business do the pricing currently?
+
+Prateek:
+total time: 7:40
+1. took too long to get to the model set up
+2. trajectory of getting the data is too long-->move to pocket slide
+	> say something like: people like farmers market > goods are perishable > how much good to bring > to solve talked to vendors and narrow down to a particular market...
+3. crop data? --> misunderstood what that dataset is, but would be interesting to include something about different crops.
+4. move next steps to pocket slides
+
+Huayi:
+total time: 5:58
+1. how many records from other 5 auction websites?
+2. more concise about the product.
+3. pipeline: show example of structured and unstructured texts--> show some details about how things are done currently.
+4. be explicit about what the tags are.
+	> a more visual way to show the information.
+	> how the scraped data are turned into useful data?
+5. show how much labeling work has been done, as a comparison of how much improvement this product can bring to the business.
+
+Robert:
+total time: 4:57
+1. more impactful lead into the problem. e.g., show two cards side-by-side, like one $10k and one $2m.
+2. existing solution can use real trading data to show the point.
+3. show some graphs to justify it's a data problem.
+	> distribution of the ratings etc. on the right of the slide. (forgot which one :))
+4. why resnet?
+5. error bars on experiment results, and maybe include other stats to show that you are a psychologist!
+	> what 69% is compared against?

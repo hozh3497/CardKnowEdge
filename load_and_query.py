@@ -39,20 +39,24 @@ def match_query(query_names,query_fields):
 # TO DO: build a dictionary mapping given input word to its all 
 # possible variants. For example: {'barclay card': 'barclays',
 #	'barclaycard'}
-CardMap = {"Chase":["Sapphire","Freedom","Chase",
-"UR","Ultimate Rewards"],"Amex":["American Express","Amex",
+CardMap = {'CSR':["Sapphire Reserve","CSR"],"CSP":["Sapphire Preferred",
+'CSP'],"Ultimate Rewards":["Ultimate Rewards",'UR'],'No preference ':[
+"Sapphire Reserve","CSR","Sapphire Preferred",'CSP',"Ultimate Rewards",'UR',"Chase"],
+'No preference  ':["American Express","Amex",
 "Gold","Delta","SPG","Green","Platinum","MR","Membership Rewards"],
-"American Express":["American Express","Amex",
+'Gold':["American Express Gold","Amex Gold", "Gold card"],
+'Platinum':['Platinum',"Plat","centurion"],'Membership Rewards':['Membership Rewards',
+"MR"],
+'No preference   ':['Citi','TYP','ThankYou points','Double Cash','Prestige',
+'Platinum Select','Simplicity','AA Platinum'],'AA Platinum':['AA Platinum','AA'],
+'Prestige':['Prestige'],
+'ThankYou Points':['ThankYou Points','TYP', 'TY'],
+'Chase':[
+"Sapphire Reserve","CSR","Sapphire Preferred",'CSP',"Ultimate Rewards",'UR',"Chase"],
+'Amex':["American Express","Amex",
 "Gold","Delta","SPG","Green","Platinum","MR","Membership Rewards"],
-'Citi':['Citi','TYP','Thank you points','Double Cash','Prestige',
-'Platinum Select','Simplicity'],'Barclays':['barclaycard','Aviator',
-'Apple reward','Jetblue','Frontier','Hawaiian','Barclays'],
-'Barclaycard':['barclaycard','Aviator', 'Apple reward','Jetblue',
-'Frontier','Hawaiian','Barclays'],'BofA':['Bank of America','BOA',
-'BofA'],'Bank of America':['Bank of America','BOA', 'BofA'],'BOA':
-['Bank of America','BOA', 'BofA'],'Wells Fargo':['Wells Fargo'],
-'Capital One':['Capital One'],'US Bank':['US Bank','U.S. Bank'],
-'Discover':['Discover']}
+'Citi':['Citi','TYP','ThankYou points','Double Cash','Prestige',
+'Platinum Select','Simplicity','AA Platinum']}
 
 
 
