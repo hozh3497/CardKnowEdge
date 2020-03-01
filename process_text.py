@@ -27,7 +27,7 @@ def maybe_concat(pparts,maxlen=100):
 		while len(string.split())<=maxlen and pparts:
 			pstr = pparts.pop(0)
 			string = string+" "+pstr
-			#if string[-1] not in set(['.','?','!']):
-			#	string+='.'
+			if string[-1] not in set(['.','?','!']):
+				string+='.'
 		outstring.append(string)
 	return outstring

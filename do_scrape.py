@@ -28,18 +28,18 @@ parser.add_argument(
     )
 args = parser.parse_args()
 
-def merge_caches(input_dir):
-	files = glob(input_dir)
-	final_dict = {}
-	for f in files:
-    	with open(f,"r") as json_file:
-        	data_dict = json.load(json_file)
-        	final_dict.update(data_dict)
+#def merge_caches(input_dir):
+#	files = glob(input_dir)
+#	final_dict = {}
+#	for f in files:
+#		with open(f,"r") as json_file:
+#			data_dict = json.load(json_file)
+#			final_dict.update(data_dict)
         	
         
 OUTPUT = '/Users/hongzhang/Documents/GitHub/IntelligentKYC/datacache/cached-'+str(2)+'-'+str(6)+'-'+str(2020)+'.json'
-with open(OUTPUT, 'w') as outfile:
-    json.dump(final_dict, outfile)
+#with open(OUTPUT, 'w') as outfile:
+#    json.dump(final_dict, outfile)
 
 if args.special_search not in ["Amex", "Chase", "Citi"]:
 	print("Entry not in list, using default list instead...")
@@ -87,7 +87,7 @@ else:
 
 date0 = (month_last,date_today,year_last)
 date1 = (month_today,date_today,year_today)
-date0 = (1, 1, 2020)
+date0 = (2, 1, 2020)
 
 
 # get the links to discussions

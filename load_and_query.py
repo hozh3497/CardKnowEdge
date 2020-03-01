@@ -40,7 +40,8 @@ def match_query(query_names,query_fields):
 # possible variants. For example: {'barclay card': 'barclays',
 #	'barclaycard'}
 CardMap = {'CSR':["Sapphire Reserve","CSR"],"CSP":["Sapphire Preferred",
-'CSP'],"Ultimate Rewards":["Ultimate Rewards",'UR'],'No preference ':[
+'CSP'],"Ultimate Rewards":["Ultimate Rewards",'UR'],'Freedom':['Freedom','Unlimited'],
+'No preference ':[
 "Sapphire Reserve","CSR","Sapphire Preferred",'CSP',"Ultimate Rewards",'UR',"Chase"],
 'No preference  ':["American Express","Amex",
 "Gold","Delta","SPG","Green","Platinum","MR","Membership Rewards"],
